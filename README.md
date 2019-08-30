@@ -70,7 +70,7 @@ To use the package, we can run sequential
 ### Typescript
 ```typescript
 import * as moment from 'moment'
-import sequentialPromise from 'sequential-promise'
+import sequentialPromise from '@hideokamoto/sequential-promise'
 
 sequentialPromise<number, string>([1,2,3,4,5], async (i) => {
   const start = moment()
@@ -87,7 +87,7 @@ sequentialPromise<number, string>([1,2,3,4,5], async (i) => {
 ### JavaScript
 ```javascript
 const moment = require('moment')
-const sequentialPromise = require('sequential-promise')
+const sequentialPromise = require('@hideokamoto/sequential-promise')
 
 sequentialPromise([1,2,3,4,5], async (i) => {
   const start = moment()
