@@ -1,6 +1,6 @@
 {
   "name": "sequential-promise",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "simply async function runner as a sequential",
   "main": "dist/index.js",
   "scripts": {
