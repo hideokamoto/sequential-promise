@@ -7,7 +7,7 @@
     "build": "rollup -c",
     "tsc": "tsc",
     "test": "jest",
-    "lint": "eslint 'libs/*.{ts}'",
+    "lint": "eslint 'libs/*.ts'",
     "doc": "typedoc --out docs libs/ && touch docs/.nojekyll",
     "postversion": "git push origin $(git describe --abbrev=0 --tags)",
     "test:watch": "jest --watch",
@@ -39,7 +39,7 @@
       }
     },
     "testMatch": [
-      "**/__tests__/*/*.+(ts|tsx|js)"
+      "**/__tests__/*.+(ts|js)"
     ]
   },
   "husky": {
