@@ -1,7 +1,11 @@
 # Sequential Promise
 Simply async task runnner as sequential
 
-## Async style
+## API Docs
+https://hideokamoto.github.io/sequential-promise/
+
+## Before the package (Async style)
+We have to run the task as asynchronous
 
 ```typescript
 import as moment from 'moment'
