@@ -63,7 +63,9 @@ End 2019-08-30T07:52:44.867Z
 ## Use the package
 To use the package, we can run sequential
 
+### Typescript
 ```typescript
+import * as moment from 'moment'
 import sequentialPromise from 'sequential-promise'
 
 sequentialPromise<number, string>([1,2,3,4,5], async (i) => {
@@ -77,6 +79,25 @@ sequentialPromise<number, string>([1,2,3,4,5], async (i) => {
   return `${i} + 2 = ${i + 2}`
 }).then(r => console.log(r))
 ```
+
+### JavaScript
+```javascript
+const moment = require('moment')
+const sequentialPromise = require('sequential-promise')
+
+sequentialPromise([1,2,3,4,5], async (i) => {
+  const start = moment()
+  console.log(`Number: ${i}`)
+  console.log(`Start: ${start.toISOString()}`)
+  await dummy()
+  console.log(`End ${moment().toISOString()}`)
+  console.log(`${moment().diff(start, 'seconds')} sec`)
+  console.log(' ')
+  return `${i} + 2 = ${i + 2}`
+}).then(r => console.log(r))
+```
+
+### Result
 
 This is the result.
 
