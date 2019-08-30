@@ -53,3 +53,5 @@ export const sequentialPromise = async <T = any, R = any>(targets: T[], callback
   await p
   return results
 }
+
+export default sequentialPromise
