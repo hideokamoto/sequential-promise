@@ -72,7 +72,7 @@
     "jest": "24.9.0",
     "lint-staged": "9.5.0",
     "rollup": "1.32.1",
-    "rollup-plugin-typescript2": "0.24.3",
+    "rollup-plugin-typescript2": "0.27.1",
     "ts-jest": "24.3.0",
     "tslib": "1.13.0",
     "typedoc": "0.15.8",
