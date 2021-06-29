@@ -8,7 +8,7 @@ https://hideokamoto.github.io/sequential-promise/
 We have to run the task as asynchronous
 
 ```typescript
-import as moment from 'moment'
+import * as moment from 'moment'
 
 const dummy = async () => {
   return new Promise(resolve => setTimeout(resolve, 1000))
