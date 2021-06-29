@@ -42,6 +42,7 @@
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const sequentialPromise = async <T = any, R = any>(targets: T[], callback: (prop: T) => Promise<R>): Promise<R[]> => {
+
   const results: R[] = []
   let p: Promise<void> = Promise.resolve()
   targets.forEach((target): void => {
@@ -52,6 +53,37 @@ export const sequentialPromise = async <T = any, R = any>(targets: T[], callback
   })
   await p
   return results
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const sequentialPromiseWithChunk = async <T = any, R = any>(targets: T[], callback: (prop: T) => Promise<R>, options?: {
+chunkSize?: number
+}): Promise<Array<Array<R>>> => {
+  const chunkSize = options ? options.chunkSize : 1
+  const items = arrayChunk<T>(targets, chunkSize)
+
+  const results = await Promise.all(items.map(async(item) => sequentialPromise<T, R>(item, callback)))
+  return results
+}
+
+/**
+ * 
+ * @param param0 chunk the array
+ * @param perChunk 
+ * @returns 
+ */
+export const arrayChunk = <T = any>([...inputArray]: T[], perChunk = 1) => {
+  return inputArray.reduce<Array<Array<T>>>((resultArray, item, index) => { 
+    const chunkIndex = Math.floor(index/perChunk)
+  
+    if(!resultArray[chunkIndex]) {
+      resultArray[chunkIndex] = [] // start a new chunk
+    }
+  
+    resultArray[chunkIndex].push(item)
+  
+    return resultArray
+  }, [])
 }
 
 export default sequentialPromise
