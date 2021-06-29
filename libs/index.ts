@@ -60,9 +60,12 @@ export const sequentialPromiseWithChunk = async <T = any, R = any>(targets: T[],
 chunkSize?: number
 }): Promise<Array<Array<R>>> => {
   const chunkSize = options ? options.chunkSize : 1
-  const items = arrayChunk<T>(targets, chunkSize)
+  const chunkedItems = arrayChunk<T>(targets, chunkSize)
 
-  const results = await Promise.all(items.map(async(item) => sequentialPromise<T, R>(item, callback)))
+  const results = await sequentialPromise<Array<T>, Array<R>>(chunkedItems, async (items) => {
+    const chunkResults = await Promise.all(items.map(async (item) => callback(item)))
+    return chunkResults
+  })
   return results
 }
 
